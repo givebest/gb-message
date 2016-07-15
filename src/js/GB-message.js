@@ -1,10 +1,10 @@
 var GBMessage = (function(){
 
-	function Controller(){
+	function Message(){
 		this.errors = [];
 	}
 
-	Controller.prototype.showDialog = function(title, msg, opts){
+	Message.prototype.showDialog = function(title, msg, opts){
 		var title = title,
 			msg = msg,
 			html = [];
@@ -27,48 +27,54 @@ var GBMessage = (function(){
 		html.push('</div>');
 
 		document.getElementsByClassName('gbmsg-dialog')[0].innerHTML = html.join('');	
-	}
+	};
 
 	// success
-	Controller.prototype.success = function(title, msg){
+	Message.prototype.success = function(title, msg){
 		this.showDialog(title, msg, {
 			'iconClass': 'icono-checkCircle'
 		});	
-	}
+	};
 
 	// failure
-	Controller.prototype.failure = function(title, msg){
+	Message.prototype.failure = function(title, msg){
 		this.showDialog(title, msg, {
 			'iconClass': 'icono-crossCircle'
 		});
-	}
+	};
+
+	// info
+	Message.prototype.info = function(title, msg){
+		this.showDialog(title, msg, {
+			'iconClass': 'icono-exclamationCircle'
+		});
+	};
 
 	// wait
-	Controller.prototype.wait = function(title, msg){
+	Message.prototype.wait = function(title, msg){
 		this.showDialog(title, msg, {
 			'iconClass': 'icono-clock'
 		});
-	}
+	};
 
 	// loading
-	Controller.prototype.loading = function(title, msg){
+	Message.prototype.loading = function(title, msg){
 		this.showDialog(title, msg, {
 			'iconClass': 'icono-reset'
 		})
-	}
+	};
 
-	return {
-		init: Controller
-	}
+	return Message;
 
 }());
 
-var msg = new GBMessage.init();
+var msg = new GBMessage();
 // msg.success('恭喜', '您的提供已经成功。');
-// msg.failure('抱歉', '网络异常，请重试。')
+msg.failure('抱歉', '网络异常，请重试。');
+// msg.info('警告', '您确定要删除这个吗？');
 // msg.wait('加载中，请稍候。');
 // msg.loading('加载中...');
-msg.loading();
+// msg.loading();
 
 
 
