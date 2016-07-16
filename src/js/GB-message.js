@@ -1,7 +1,18 @@
 var GBMessage = (function(){
 
+	var domBody = document.body,
+		overlay,   // 遮罩层
+		dialog;    // 信息层
+
 	function Message(){
-		this.errors = [];
+		var target = document.createElement('div');
+		target.id = 'GBMsg';
+		target.className = 'gbmsg-overlay';
+		target.innerHTML = '<div class="gbmsg-dialog"></div>';
+		domBody.appendChild(target);
+
+		overlay = document.getElementById('GBMsg');
+		dialog = GBMsg.children[0];
 	}
 
 	Message.prototype.showDialog = function(title, msg, opts){
@@ -12,22 +23,27 @@ var GBMessage = (function(){
 		html.push('<div class="gbmsg-dialog-icon">');
 		html.push('<i class="' + opts.iconClass + '"></i>');
 		html.push('</div>');
-		html.push('<div class="gbmsg-dialog-container">');
+		// html.push('<div class="gbmsg-dialog-container">');
 
 		// msg为空，移除title，msg展示title内容
 		!!msg ? 
-			html.push('<h5 class="gbmsg-dialog-title">' + title + '</h5>') :
+			html.push('<div class="gbmsg-dialog-container"><h5 class="gbmsg-dialog-title">' + title + '</h5>') :
 			msg = title;
 
 		// msg依然为空，移除msg，只展示icon
 		!!msg ?
-			html.push('<div class="gbmsg-dialog-content">' + msg + '</div>') : 
+			html.push('<div class="gbmsg-dialog-container"><div class="gbmsg-dialog-content">' + msg + '</div></div>') : 
 			'';
 
 		html.push('</div>');
 
-		document.getElementsByClassName('gbmsg-dialog')[0].innerHTML = html.join('');	
+		dialog.innerHTML = html.join('');	
+		overlay.style.display = 'block';
 	};
+
+	Message.prototype.hideDialog = function(){
+		overlay.style.display = 'none';	
+	}
 
 	// success
 	Message.prototype.success = function(title, msg){
@@ -78,19 +94,29 @@ var GBMessage = (function(){
 		});
 	};
 
+	// hide
+	Message.prototype.hide = function(){
+		this.hideDialog();
+	}
+
 	return Message;
 
 }());
 
-var msg = new GBMessage();
-// msg.success('恭喜', '您的提供已经成功。');
-// msg.failure('抱歉', '网络异常，请重试。');
-// msg.info('警告', '您确定要删除这个吗？');
-// msg.waitting('加载中，请稍候。');
-// msg.loading('加载中...');
-// msg.loading();
-// msg.frown('很遗憾', '亲未能抽中大奖');
-msg.smile('恭喜', '小手一点，大奖到手');
+var gbmsg = new GBMessage();
+window.gbmsg = gbmsg;
+// module.exports = gbmsg;
+
+
+
+// gbmsg.success('恭喜', '您的提供已经成功。');
+// gbmsg.failure('抱歉', '网络异常，请重试。');
+// gbmsg.info('警告', '您确定要删除这个吗？');
+// gbmsg.waitting('加载中，请稍候。');
+// gbmsg.loading('加载中...');
+// gbmsg.loading();
+// gbmsg.frown('很遗憾', '亲未能抽中大奖');
+// gbmsg.smile('恭喜', '小手一点，大奖到手');
 
 
 

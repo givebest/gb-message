@@ -247,6 +247,7 @@ body {
   top: 0;
   visibility: visible;
   z-index: 9990;
+  display: none;
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -261,7 +262,6 @@ body {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   padding: .06rem .06rem;
-  min-width: .4rem;
   max-width: 80%;
   color: #aaa;
   font-size: .12rem;
@@ -316,7 +316,7 @@ body {
   color: #ccc; }
 
 .gbmsg-dialog-container {
-  padding: 0 .02rem 0 .06rem;
+  padding: 0 .02rem 0 .08rem;
   text-align: left;
   word-break: break-all;
   word-wrap: break-word; }
