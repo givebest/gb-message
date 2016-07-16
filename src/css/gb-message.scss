@@ -80,6 +80,17 @@ body{
             align-self: auto;
     box-sizing: border-box;
 }
+.gbmsg-dialog-icon .icono-clock{
+    -webkit-animation: loading 2s linear infinite;
+            animation: loading 2s linear infinite;
+}
+.gbmsg-dialog-icon .icono-clock:after{
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    -webkit-transform: rotate(45deg) translate(-1px,1px);
+    transform: rotate(45deg) translate(-1px,1px);
+}
 .gbmsg-dialog-icon .icono-reset{
 	width: 16px;
 	height: 16px;
