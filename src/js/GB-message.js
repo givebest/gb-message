@@ -14,12 +14,12 @@ var GBMessage = (function(){
 		html.push('</div>');
 		html.push('<div class="gbmsg-dialog-container">');
 
-		// msg为空，移除title，msg内容为title内容
+		// msg为空，移除title，msg展示title内容
 		!!msg ? 
 			html.push('<h5 class="gbmsg-dialog-title">' + title + '</h5>') :
 			msg = title;
 
-		// msg依然为空，移除msg，只会展示icon
+		// msg依然为空，移除msg，只展示icon
 		!!msg ?
 			html.push('<div class="gbmsg-dialog-content">' + msg + '</div>') : 
 			'';
@@ -50,8 +50,8 @@ var GBMessage = (function(){
 		});
 	};
 
-	// wait
-	Message.prototype.wait = function(title, msg){
+	// waitting
+	Message.prototype.waitting = function(title, msg){
 		this.showDialog(title, msg, {
 			'iconClass': 'icono-clock'
 		});
@@ -61,7 +61,21 @@ var GBMessage = (function(){
 	Message.prototype.loading = function(title, msg){
 		this.showDialog(title, msg, {
 			'iconClass': 'icono-reset'
-		})
+		});
+	};
+
+	// frown
+	Message.prototype.frown = function(title, msg){
+		this.showDialog(title, msg, {
+			'iconClass': 'icono-frown'
+		});
+	};
+
+	// smile
+	Message.prototype.smile = function(title, msg){
+		this.showDialog(title, msg, {
+			'iconClass': 'icono-smile'
+		});
 	};
 
 	return Message;
@@ -70,12 +84,13 @@ var GBMessage = (function(){
 
 var msg = new GBMessage();
 // msg.success('恭喜', '您的提供已经成功。');
-msg.failure('抱歉', '网络异常，请重试。');
+// msg.failure('抱歉', '网络异常，请重试。');
 // msg.info('警告', '您确定要删除这个吗？');
-// msg.wait('加载中，请稍候。');
+// msg.waitting('加载中，请稍候。');
 // msg.loading('加载中...');
 // msg.loading();
-
+// msg.frown('很遗憾', '亲未能抽中大奖');
+msg.smile('恭喜', '小手一点，大奖到手');
 
 
 
