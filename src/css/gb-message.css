@@ -313,6 +313,7 @@ body {
 .gbmsg-dialog-title {
   margin: 0 0 .01rem;
   font-weight: bold;
+  font-size: .12rem;
   color: #ccc; }
 
 .gbmsg-dialog-container {
