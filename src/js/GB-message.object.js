@@ -27,7 +27,7 @@ var GBMessage = (function(){
 		overlay,   // 遮罩层
 		dialog;    // 信息层
 
-	function Message(){
+	function init(){
 		var eleDiv = document.createElement('div');
 		eleDiv.id = 'GBMsg';
 		eleDiv.className = 'gbmsg-overlay';
@@ -38,7 +38,7 @@ var GBMessage = (function(){
 		dialog = GBMsg.firstElementChild || GBMsg.children[0];
 	}
 
-	Message.prototype.showDialog = function(title, msg, opts){
+	function showDialog(title, msg, opts){
 		var _this = this,
 			title = title,
 			msg = msg,
@@ -77,78 +77,88 @@ var GBMessage = (function(){
 		if(!!optsTime && optsTime < 100){
 			clearTimeout && clearTimeout(timeoutId);
 			timeoutId = setTimeout(function(){
-				_this.hide();	
+				hide();	
 				clearTimeout = null;
 			}, optsTime * 1000);
 		}
-	};
+	}
 
-	Message.prototype.hideDialog = function(){
+	function hideDialog(){
 		overlay.style.display = 'none';	
-	};
+	}
 
 	// success
-	Message.prototype.success = function(title, msg){
-		this.showDialog(title, msg, {
+	function success(title, msg){
+		showDialog(title, msg, {
 			'iconClass': 'icono-checkCircle'
 		});	
-	};
+	}
 
 	// failure
-	Message.prototype.failure = function(title, msg){
-		this.showDialog(title, msg, {
+	function failure(title, msg){
+		showDialog(title, msg, {
 			'iconClass': 'icono-crossCircle'
 		});
-	};
+	}
 
 	// info
-	Message.prototype.info = function(title, msg){
-		this.showDialog(title, msg, {
+	function info(title, msg){
+		showDialog(title, msg, {
 			'iconClass': 'icono-exclamationCircle'
 		});
-	};
+	}
 
 	// waitting
-	Message.prototype.waitting = function(title, msg){
-		this.showDialog(title, msg, {
+	function waitting(title, msg){
+		showDialog(title, msg, {
 			'iconClass': 'icono-clock',
 			'timeout': 100
 		});
-	};
+	}
 
 	// loading
-	Message.prototype.loading = function(title, msg){
-		this.showDialog(title, msg, {
+	function loading(title, msg){
+		showDialog(title, msg, {
 			'iconClass': 'icono-reset',
 			'timeout': 100
 		});
-	};
-
-	// frown
-	Message.prototype.frown = function(title, msg){
-		this.showDialog(title, msg, {
-			'iconClass': 'icono-frown'
-		});
-	};
-
-	// smile
-	Message.prototype.smile = function(title, msg){
-		this.showDialog(title, msg, {
-			'iconClass': 'icono-smile'
-		});
-	};
-
-	// hide
-	Message.prototype.hide = function(){
-		this.hideDialog();
 	}
 
-	return Message;
+	// frown
+	function frown(title, msg){
+		showDialog(title, msg, {
+			'iconClass': 'icono-frown'
+		});
+	}
+
+	// smile
+	function smile(title, msg){
+		showDialog(title, msg, {
+			'iconClass': 'icono-smile'
+		});
+	}
+
+	// hide
+	function hide(){
+		hideDialog();
+	}
+
+	// 初始化
+	init();
+
+	return {
+		success: success,
+		failure: failure,
+		info: info,
+		waitting: waitting,
+		loading: loading,
+		frown: frown,
+		smile: smile
+	}
 
 }());
 
-var gbmsg = new GBMessage();
-window.gbmsg = gbmsg;
+window.gbmsg = gbmsg = window.GBMessage;
 
 
 

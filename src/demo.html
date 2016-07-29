@@ -130,40 +130,7 @@
 	
 	
 	
-	
-	<script>
-	var message = (function(){
-
-		function init(){
-			console.log('initxxx');
-		}
-
-		function showDialog(title, msg){
-			console.log(title, msg);
-		}
-
-		function success(title, msg){
-			showDialog(title, msg);
-		}
-
-		function failure(title, msg){
-			showDialog(title, msg);
-		}
-
-		init();
-
-		return {
-			success: success,
-			failure: failure
-		}
-
-	}());
-
-		message.success('恭喜', '成功了');
-		message.failure('抱歉', '失败了');
-	</script>
-
-	<script src="js/gb-message.js"></script>
+	<script src="js/gb-message.object.js"></script>
 
 
 
