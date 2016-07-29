@@ -28,14 +28,14 @@ var GBMessage = (function(){
 		dialog;    // 信息层
 
 	function Message(){
-		var target = document.createElement('div');
-		target.id = 'GBMsg';
-		target.className = 'gbmsg-overlay';
-		target.innerHTML = '<div class="gbmsg-dialog"></div>';
-		domBody.appendChild(target);
+		var eleDiv = document.createElement('div');
+		eleDiv.id = 'GBMsg';
+		eleDiv.className = 'gbmsg-overlay';
+		eleDiv.innerHTML = '<div class="gbmsg-dialog"></div>';
+		domBody.appendChild(eleDiv);
 
 		overlay = document.getElementById('GBMsg');
-		dialog = GBMsg.children[0];
+		dialog = GBMsg.firstElementChild || GBMsg.children[0];
 	}
 
 	Message.prototype.showDialog = function(title, msg, opts){
@@ -45,7 +45,8 @@ var GBMessage = (function(){
 			opts = opts,
 			optsTime = opts.timeout || 1;
 			html = [],
-			htmlContainer = '';
+			htmlContainer = '',
+			timeoutId = null;
 
 		html.push('<div class="gbmsg-dialog-icon">');
 		html.push('<i class="' + opts.iconClass + '"></i>');
@@ -74,8 +75,10 @@ var GBMessage = (function(){
 		overlay.style.display = 'block';
 
 		if(!!optsTime && optsTime < 100){
-			setTimeout(function(){
+			clearTimeout && clearTimeout(timeoutId);
+			timeoutId = setTimeout(function(){
 				_this.hide();	
+				clearTimeout = null;
 			}, optsTime * 1000);
 		}
 	};
