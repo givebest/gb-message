@@ -5,7 +5,7 @@ var rename       = require('gulp-rename');
 var uglify       = require('gulp-uglify');
 var plumber      = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
-var runSequence  = require('run-sequence')
+var runSequence  = require('run-sequence');
 
 
 
