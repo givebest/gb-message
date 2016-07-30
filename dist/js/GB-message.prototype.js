@@ -27,7 +27,7 @@ var GBMessage = (function(){
 		overlay,   // 遮罩层
 		dialog;    // 信息层
 
-	function init(){
+	function Message(){
 		var eleDiv = document.createElement('div');
 		eleDiv.id = 'GBMsg';
 		eleDiv.className = 'gbmsg-overlay';
@@ -38,7 +38,7 @@ var GBMessage = (function(){
 		dialog = GBMsg.firstElementChild || GBMsg.children[0];
 	}
 
-	function showDialog(title, msg, opts){
+	Message.prototype.showDialog = function(title, msg, opts){
 		var _this = this,
 			title = title,
 			msg = msg,
@@ -74,93 +74,81 @@ var GBMessage = (function(){
 		dialog.innerHTML = html.join('');	
 		overlay.style.display = 'block';
 
-		console.log(optsTime)
-
 		if(!!optsTime && optsTime < 100){
 			clearTimeout && clearTimeout(timeoutId);
 			timeoutId = setTimeout(function(){
-				hide();	
+				_this.hide();	
 				clearTimeout = null;
 			}, optsTime * 1000);
 		}
-	}
+	};
 
-	function hideDialog(){
+	Message.prototype.hideDialog = function(){
 		overlay.style.display = 'none';	
-	}
+	};
 
 	// success
-	function success(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.success = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-checkCircle'
 		});	
-	}
+	};
 
 	// failure
-	function failure(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.failure = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-crossCircle'
 		});
-	}
+	};
 
 	// info
-	function info(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.info = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-exclamationCircle'
 		});
-	}
+	};
 
 	// waitting
-	function waitting(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.waitting = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-clock',
 			'timeout': 100
 		});
-	}
+	};
 
 	// loading
-	function loading(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.loading = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-reset',
 			'timeout': 100
 		});
-	}
+	};
 
 	// frown
-	function frown(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.frown = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-frown'
 		});
-	}
+	};
 
 	// smile
-	function smile(title, msg){
-		showDialog(title, msg, {
+	Message.prototype.smile = function(title, msg){
+		this.showDialog(title, msg, {
 			'iconClass': 'icono-smile'
 		});
-	}
+	};
 
 	// hide
-	function hide(){
-		hideDialog();
-	}
+	Message.prototype.hide = function(){
+		this.hideDialog();
+	};
 
-	// 初始化
-	init();
-
-	return {
-		success: success,
-		failure: failure,
-		info: info,
-		waitting: waitting,
-		loading: loading,
-		frown: frown,
-		smile: smile
-	}
+	return Message;
 
 }());
 
-window.gbmsg = gbmsg = window.GBMessage;
+var gbmsg = new GBMessage();
+window.gbmsg = gbmsg;
 
 
 

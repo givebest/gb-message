@@ -44,4 +44,9 @@
 消息状态Icon来自：[https://github.com/saeedalipoor/icono](https://github.com/saeedalipoor/icono)
 
 
+
+## License
+
+[MIT](./LICENSE) © 2016 [givebest](https://github.com/givebest)
+
  
