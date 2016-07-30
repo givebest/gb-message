@@ -1,45 +1,23 @@
-var gulp        = require('gulp'),
-    less        = require('gulp-less'),
-    watch       = require('gulp-watch'),
-    cssmin      = require('gulp-cssmin'),
-    rename      = require('gulp-rename'),
-    plumber     = require('gulp-plumber'),
-    browserSync = require('browser-sync'),
+var gulp         = require('gulp'),
+    sass         = require('gulp-sass'),
+    cleanCSS     = require('gulp-clean-css'),
+    rename       = require('gulp-rename'),
+    plumber      = require('gulp-plumber');
     autoprefixer = require('gulp-autoprefixer');
 
 
-// less -> css
-gulp.task('less', function () {
-    return gulp.src('./less/icono.less')
-        .pipe(plumber())
-        .pipe(less())
-        .pipe(autoprefixer('last 10 versions', 'ie 10'))
-        .pipe(gulp.dest('./build'));
+
+// sass -> css
+gulp.task('sass', function () {
+  return gulp.src('./src/css/gb-message.scss')
+    .pipe(plumber())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCSS())
+    .pipe(autoprefixer('last 10 versions', 'id 9'))
+    .pipe(gulp.dest('./src/css'));
 });
 
 
-// .css -> .min.css
-gulp.task('cssmin', function () {
-    gulp.src('./build/icono.css')
-        .pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./dist'));
-});
 
 
-// live realod the browser
-gulp.task('browser-sync', function() {
-    browserSync({
-        server: {
-            baseDir: './',
-            index: 'index.html',
-            reloadDelay: 2000
-        }
-    });
-});
-
-
-gulp.task('default', ['browser-sync'], function () {
-    gulp.watch(['./less/**/*.less', './index.html'], ['less']);
-    gulp.watch(['./build/icono.css'], ['cssmin', browserSync.reload]);
-});
+gulp.task('default', ['sass']);
