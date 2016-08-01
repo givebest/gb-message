@@ -394,7 +394,7 @@ body{
   padding: 0;
   font-weight: bold;
   font-size: 14px;
-  color: #ccc; }
+  color: #eee; }
 
 .gbmsg-dialog-container {
   padding: 2px 6px 2px 8px;
@@ -405,13 +405,13 @@ body{
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0; }
-  100% {
+  50% {
     opacity: 1; } }
 
 @keyframes fadeIn {
   0% {
     opacity: 0; }
-  100% {
+  50% {
     opacity: 1; } }
 
 @-webkit-keyframes loading {
