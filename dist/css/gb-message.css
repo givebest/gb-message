@@ -402,6 +402,10 @@ body{
   word-break: break-all;
   word-wrap: break-word; }
 
+.gbmsg-fadeOut {
+  -webkit-animation: fadeOut 1s ease;
+  animation: fadeOut 1s ease; }
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0; }
@@ -413,6 +417,18 @@ body{
     opacity: 0; }
   50% {
     opacity: 1; } }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; } }
 
 @-webkit-keyframes loading {
   0% {

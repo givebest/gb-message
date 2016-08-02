@@ -44,8 +44,8 @@ body{
     // text-align: center;
     // border: 1px solid #46c6ff;
     // line-height: 1.6;
-    // -webkit-animation: zoomIn 1s ease;
-    // animation: zoomIn 1s ease;
+    // -webkit-animation: fadeIn 1s ease;
+    // animation: fadeIn 1s ease;
     display: -ms-inline-flexbox;
     display: -webkit-inline-flex;
     display: inline-flex;
@@ -119,6 +119,11 @@ body{
 	// padding: 0 .04rem 0 0;
 }
 
+.gbmsg-fadeOut{
+    -webkit-animation: fadeOut 1s ease;
+            animation: fadeOut 1s ease;
+}
+
 
 
 
@@ -141,6 +146,29 @@ body{
     opacity: 1;
   }
 }
+
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+ 50% {
+    opacity: 0;
+  }
+}
+
+
 
 @-webkit-keyframes loading {
 	0% {

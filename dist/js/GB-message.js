@@ -74,19 +74,26 @@ var GBMessage = (function(){
 		dialog.innerHTML = html.join('');	
 		overlay.style.display = 'block';
 
-		console.log(optsTime)
 
 		if(!!optsTime && optsTime < 100){
 			clearTimeout && clearTimeout(timeoutId);
 			timeoutId = setTimeout(function(){
 				hide();	
 				clearTimeout = null;
-			}, optsTime * 1000);
+			}, optsTime * 1500);
 		}
 	}
 
 	function hideDialog(){
-		overlay.style.display = 'none';	
+		var hideTimeoutId = null;
+		addClass(overlay, 'gbmsg-fadeOut');
+
+		clearTimeout && clearTimeout(timeoutId);
+		hideTimeoutId = setTimeout(function(){
+			removeClass(overlay, 'gbmsg-fadeOut');
+			overlay.style.display = 'none';
+			clearTimeout = null;
+		}, 400);
 	}
 
 	// success
@@ -144,6 +151,31 @@ var GBMessage = (function(){
 	function hide(){
 		hideDialog();
 	}
+
+	/*
+		classList (@see https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
+		support: http://caniuse.com/#search=classList
+		so: 以下 hasClass/addClass/removeClass 仅满足此处需求
+	*/
+
+	// hasClass
+	function hasClass(ele, name){
+		if(!ele || !name) return;
+		return ele.classList.contains(name);
+	}
+
+	// addClass
+	function addClass(ele, name){
+		if(!ele || !name) return;
+		ele.classList.add(name);
+	}
+
+	// removeClass
+	function removeClass(ele, name){
+		if(!ele || !name) return;
+		ele.classList.remove(name);
+	}
+
 
 	// 初始化
 	init();
