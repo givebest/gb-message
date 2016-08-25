@@ -35,7 +35,7 @@ var GBMessage = (function(){
 		domBody.appendChild(eleDiv);
 
 		overlay = document.getElementById('GBMsg');
-		dialog = GBMsg.firstElementChild || GBMsg.children[0];
+		dialog = overlay.firstElementChild || overlay.children[0];
 	}
 
 	function showDialog(title, msg, opts){
