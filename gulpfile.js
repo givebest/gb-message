@@ -14,7 +14,7 @@ gulp.task('sass', function(){
   return gulp.src('./src/css/gb-message.scss')
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer('last 10 versions', 'ie 9'))
+    .pipe(autoprefixer('> 1%','last 3 versions','iOS >= 7','Android >= 4'))
     .pipe(gulp.dest('./src/css'));
 });
 

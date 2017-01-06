@@ -4,7 +4,7 @@
 /**
 * GBMessage
 * @class gbmsg
-* @see https://coding.net/u/givebest/p/GB-Message/git
+* @see https://github.com/givebest/gb-message
 * @author givenlovs@msn.com
 **/
 
@@ -21,11 +21,12 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 */
 
 
-var GBMessage = (function(){
+(function(){
 
 	var domBody = document.body,
 		overlay,   // 遮罩层
-		dialog;    // 信息层
+		dialog,    // 信息层
+		hideTimeoutId = undefined;
 
 	function init(){
 		var eleDiv = document.createElement('div');
@@ -78,7 +79,8 @@ var GBMessage = (function(){
 		if(!!optsTime && optsTime < 100){
 			clearTimeout && clearTimeout(timeoutId);
 			timeoutId = setTimeout(function(){
-				hide();	
+				// hide();	
+				overlay.style.display = 'none';
 				clearTimeout = null;
 			}, optsTime * 1500);
 		}
@@ -149,7 +151,9 @@ var GBMessage = (function(){
 
 	// hide
 	function hide(){
-		hideDialog();
+		hideTimeoutId && clearTimeout(hideTimeoutId);
+		overlay.style.display = 'none';
+		hideTimeoutId = null;
 	}
 
 	/*
@@ -180,19 +184,27 @@ var GBMessage = (function(){
 	// 初始化
 	init();
 
-	return {
+	var gbMessage = {
 		success: success,
 		failure: failure,
 		info: info,
 		waitting: waitting,
 		loading: loading,
 		frown: frown,
-		smile: smile
+		smile: smile,
+		hide: hide
 	}
 
+	// AMD (@see https://github.com/jashkenas/underscore/blob/master/underscore.js)
+	if (typeof define == 'function' && define.amd) {
+		define('GB-message.js', [], function() {
+			return gbMessage;
+		});
+	} else {
+		// (@see https://github.com/madrobby/zepto/blob/master/src/zepto.js)
+		window.gbmsg === undefined && (window.gbmsg = gbMessage);
+	}
 }());
-
-window.gbmsg = gbmsg = window.GBMessage;
 
 
 
