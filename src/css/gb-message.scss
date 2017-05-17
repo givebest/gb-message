@@ -114,6 +114,8 @@ body{
 	text-align: left;
 	word-break:break-all;
 	word-wrap:break-word;
+    // Fixed iOS8.1 文字不自动换行 bug
+    border: 1px solid #191818;
 }
 .gbmsg-dialog-content{
 	// padding: 0 .04rem 0 0;
