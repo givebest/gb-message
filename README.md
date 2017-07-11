@@ -17,7 +17,7 @@
 
 	gbmsg.method(title, msg);   
 
-> `method`： success/failure/info/waitting/loading/frown/smile    
+> `method`： show/success/failure/info/waitting/loading/frown/smile    
 > `title`：消息标题(可选)    
 > `msg`： 消息内容(可选)
 
