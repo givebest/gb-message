@@ -357,7 +357,8 @@ body{
   padding: 2px 6px 2px 8px;
   text-align: left;
   word-break: break-all;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  border: 1px solid #191818; }
 
 .gbmsg-fadeOut {
   -webkit-animation: fadeOut 1s ease;

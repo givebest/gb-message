@@ -23,7 +23,8 @@
 
 
 ### 示例
-
+	
+	gbmsg.show('没有 Icon', '我没有 Icon 显示。');  
 	gbmsg.success('恭喜', '您的提供已经成功。');
 	gbmsg.failure('抱歉', '网络异常，请重试。');
 	gbmsg.info('警告', '您确定要删除这个吗？');
