@@ -26,7 +26,8 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 	var domBody = document.body,
 		overlay,   // 遮罩层
 		dialog,    // 信息层
-		hideTimeoutId = undefined;
+		hideTimeoutId = undefined,
+		timeoutId = undefined;
 
 	function init(){
 		var eleDiv = document.createElement('div');
@@ -43,15 +44,17 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 		var _this = this,
 			title = title,
 			msg = msg,
-			opts = opts,
+			opts = opts || {},
 			optsTime = opts.timeout || 1;
 			html = [],
 			htmlContainer = '',
-			timeoutId = null;
+			iconClass = opts.iconClass;
 
-		html.push('<div class="gbmsg-dialog-icon">');
-		html.push('<i class="' + opts.iconClass + '"></i>');
-		html.push('</div>');
+		if (iconClass) {
+			html.push('<div class="gbmsg-dialog-icon">');
+			html.push('<i class="' + iconClass + '"></i>');
+			html.push('</div>');
+		}
 
 		// msg为空，移除title，msg展示title内容
 /*		!!msg ? 
@@ -76,25 +79,26 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 		overlay.style.display = 'block';
 
 
+		// @see https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout
 		if(!!optsTime && optsTime < 100){
-			clearTimeout && clearTimeout(timeoutId);
+			timeoutId && clearTimeout(timeoutId);
 			timeoutId = setTimeout(function(){
 				// hide();	
 				overlay.style.display = 'none';
-				clearTimeout = null;
+				timeoutId = undefined;
 			}, optsTime * 1500);
 		}
 	}
 
 	function hideDialog(){
-		var hideTimeoutId = null;
+		var hideTimeoutId = undefined;
 		addClass(overlay, 'gbmsg-fadeOut');
 
 		clearTimeout && clearTimeout(timeoutId);
 		hideTimeoutId = setTimeout(function(){
 			removeClass(overlay, 'gbmsg-fadeOut');
 			overlay.style.display = 'none';
-			clearTimeout = null;
+			clearTimeout = undefined;
 		}, 400);
 	}
 
@@ -149,11 +153,16 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 		});
 	}
 
+	// no icon
+	function noicon (title, msg) {
+		showDialog(title, msg);
+	}
+
 	// hide
 	function hide(){
-		hideTimeoutId && clearTimeout(hideTimeoutId);
+		timeoutId && clearTimeout(timeoutId);
 		overlay.style.display = 'none';
-		hideTimeoutId = null;
+		timeoutId = undefined;
 	}
 
 	/*
@@ -192,7 +201,8 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 		loading: loading,
 		frown: frown,
 		smile: smile,
-		hide: hide
+		hide: hide,
+		show: noicon
 	}
 
 	// AMD (@see https://github.com/jashkenas/underscore/blob/master/underscore.js)
