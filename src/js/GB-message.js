@@ -27,11 +27,7 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
 		overlay,   // 遮罩层
 		dialog,    // 信息层
 		hideTimeoutId = undefined,
-<<<<<<< HEAD
 		timeoutId = undefined;
-=======
-		clearTimeout = undefined;
->>>>>>> 73195d3b735a1f014dd609964eba15c52ad87834
 
 	function init(){
 		var eleDiv = document.createElement('div');
