@@ -5,48 +5,33 @@
 .stickCenterV {
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%); }
+  transform: translateY(-50%); }
 
 .stickCenterH, [class*="icono-exclamation"]:after {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%); }
+  transform: translateX(-50%); }
 
 .stickCenter, [class*="icono-plus"]:before, [class*="icono-check"]:before, [class*="icono-plus"]:after, [class*="icono-cross"]:before, [class*="icono-cross"]:after, .icono-clock:before, .icono-clock:after {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%); }
 
 .spin[class*="spin"] {
-  -webkit-animation: loading-spinner 2s infinite linear;
-          animation: loading-spinner 2s infinite linear; }
-
-@-webkit-keyframes loading-spinner {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
+  animation: loading-spinner 2s infinite linear; }
 
 @keyframes loading-spinner {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
+    transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
+    transform: rotate(360deg); } }
 
 .icono-icono {
   width: 13px;
   height: 4px;
   box-shadow: inset 0 0 0 32px, 0 16px, 17px -18px;
-  -webkit-transform: skew(0, 30deg);
-          transform: skew(0, 30deg);
+  transform: skew(0, 30deg);
   margin: 11px 19px 19px 2px; }
   .icono-icono:before {
     position: absolute;
@@ -55,8 +40,7 @@
     box-shadow: inset 0 0 0 32px, 0 16px, -17px -17px;
     right: -17px;
     top: -10px;
-    -webkit-transform: skew(0, -48deg);
-            transform: skew(0, -48deg); }
+    transform: skew(0, -48deg); }
   .icono-icono:after {
     position: absolute;
     width: 22px;
@@ -66,8 +50,7 @@
     border: 4px solid;
     border-top-color: transparent;
     border-bottom: none;
-    -webkit-transform: skew(0, -30deg) scaleY(0.6);
-            transform: skew(0, -30deg) scaleY(0.6); }
+    transform: skew(0, -30deg) scaleY(0.6); }
 
 [class*="icono-plus"], [class*="icono-cross"] {
   width: 30px;
@@ -87,15 +70,13 @@
     height: 18px; }
 
 .icono-cross, .icono-crossCircle {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg); }
+  transform: rotate(45deg); }
 
 [class*="icono-check"] {
   width: 28px;
   height: 28px;
   margin: 3px 0 3px 6px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg); }
+  transform: rotate(-45deg); }
   [class*="icono-check"]:before, [class*="icono-check"]:after {
     box-shadow: inset 0 0 0 32px; }
   [class*="icono-check"]:after {
@@ -133,8 +114,7 @@
     top: 27%; }
   .icono-smile:after, .icono-frown:after {
     border-radius: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     border-top-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
@@ -163,8 +143,7 @@
     border-right-color: transparent;
     border-left-color: transparent;
     border-bottom-color: transparent;
-    -webkit-transform: rotate(135deg);
-            transform: rotate(135deg); }
+    transform: rotate(135deg); }
 
 .icono-clock {
   width: 26px;
@@ -181,10 +160,8 @@
   .icono-clock:after {
     width: 6px;
     height: 2px;
-    -webkit-transform-origin: left center;
-            transform-origin: left center;
-    -webkit-transform: rotate(45deg) translate(1px, 2px);
-            transform: rotate(45deg) translate(1px, 2px); }
+    transform-origin: left center;
+    transform: rotate(45deg) translate(1px, 2px); }
 
 [class*="icono-exclamation"] {
   overflow: visible;
@@ -201,8 +178,7 @@
     border-width: 2px 0 0 2px;
     border-style: solid;
     border-radius: 4px 0;
-    -webkit-transform: rotate(45deg) skew(12deg, 12deg);
-            transform: rotate(45deg) skew(12deg, 12deg); }
+    transform: rotate(45deg) skew(12deg, 12deg); }
   [class*="icono-exclamation"]:after {
     width: 4px;
     height: 3px;
@@ -218,10 +194,8 @@
       top: 6px; }
 
 .icono-frown:after {
-  -webkit-transform: translateX(-50%) rotate(180deg);
-          transform: translateX(-50%) rotate(180deg);
-  -webkit-transform-origin: center 85%;
-          transform-origin: center 85%; }
+  transform: translateX(-50%) rotate(180deg);
+  transform-origin: center 85%; }
 
 .icono-circle {
   width: 22px;
@@ -273,14 +247,12 @@ body{
   height: 100%;
   min-height: 100vh;
   background-color: rgba(255, 255, 255, 0.9);
-  -webkit-animation: fadeIn 1s ease;
   animation: fadeIn 1s ease; }
 
 .gbmsg-dialog {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   padding: 6px;
   max-width: 80%;
@@ -308,39 +280,31 @@ body{
     -ms-flex-align: center;
     align-items: center; */
   /*定义为flexbox的"父元素"*/
-  display: -webkit-box;
   display: flex;
   /*定义子元素垂直居中*/
-  -webkit-box-align: center;
   align-items: center;
   /*子元素沿主轴对齐方式均分*/
-  -webkit-box-pack: justify;
   justify-content: space-between; }
 
 .gbmsg-dialog-container {
-  -webkit-box-flex: 1;
   flex: 1;
   width: 0%;
-  -webkit-align-self: auto;
   -ms-grid-row-align: auto;
       align-self: auto;
   box-sizing: border-box; }
 
 .gbmsg-dialog-icon .icono-clock {
-  -webkit-animation: loading 2s linear infinite;
   animation: loading 2s linear infinite; }
 
 .gbmsg-dialog-icon .icono-clock:after {
   height: 4px;
   width: 4px;
   border-radius: 50%;
-  -webkit-transform: rotate(45deg) translate(-1px, 1px);
   transform: rotate(45deg) translate(-1px, 1px); }
 
 .gbmsg-dialog-icon .icono-reset {
   width: 16px;
   height: 16px;
-  -webkit-animation: loading 1s linear infinite;
   animation: loading 1s linear infinite; }
 
 .gbmsg-dialog-icon .icono-reset:before {
@@ -361,14 +325,7 @@ body{
   border: 1px solid #191818; }
 
 .gbmsg-fadeOut {
-  -webkit-animation: fadeOut 1s ease;
   animation: fadeOut 1s ease; }
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: 1; } }
 
 @keyframes fadeIn {
   0% {
@@ -376,30 +333,14 @@ body{
   50% {
     opacity: 1; } }
 
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1; }
-  50% {
-    opacity: 0; } }
-
 @keyframes fadeOut {
   0% {
     opacity: 1; }
   50% {
     opacity: 0; } }
 
-@-webkit-keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
 @keyframes loading {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }

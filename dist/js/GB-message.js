@@ -24,7 +24,7 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
   'use strict';
 
   // @see https://github.com/umdjs/umd
-  // @see https://github.com/ruyadorno/generator-umd  
+  // @see https://github.com/ruyadorno/generator-umd
   if (typeof module === "object" && typeof module.exports === "object") {
     // @see https://github.com/mzabriskie/axios/blob/master/dist/axios.js
     // @see https://github.com/jquery/jquery/blob/master/src/wrapper.js
@@ -45,8 +45,8 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
   var domBody = document.body,
     overlay,   // 遮罩层
     dialog,    // 信息层
-    hideTimeoutId = undefined,
-    timeoutId = undefined;
+    hideTimeoutId,
+    timeoutId;
 
   function init(){
     var eleDiv = document.createElement('div');
@@ -104,20 +104,20 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
       timeoutId = setTimeout(function(){
         // hide();
         overlay.style.display = 'none';
-        timeoutId = undefined;
+        timeoutId = null;
       }, optsTime * 1500);
     }
   }
 
   function hideDialog(){
-    var hideTimeoutId = undefined;
+    var hideTimeoutId = null;
     addClass(overlay, 'gbmsg-fadeOut');
 
     clearTimeout && clearTimeout(timeoutId);
     hideTimeoutId = setTimeout(function(){
       removeClass(overlay, 'gbmsg-fadeOut');
       overlay.style.display = 'none';
-      clearTimeout = undefined;
+      clearTimeout = null;
     }, 400);
   }
 
@@ -181,7 +181,7 @@ gbmsg.smile('恭喜', '小手一点，大奖到手');
   function hide(){
     timeoutId && clearTimeout(timeoutId);
     overlay.style.display = 'none';
-    timeoutId = undefined;
+    timeoutId = null;
   }
 
   /*
